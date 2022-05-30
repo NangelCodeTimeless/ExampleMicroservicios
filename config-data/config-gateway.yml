@@ -1,0 +1,51 @@
+server:
+  port: 8085
+logging:
+  level:
+    root: INFO
+spring:
+  cloud:
+    discovery:
+      enabled: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: config-customer
+          uri: lb://config-customer
+          predicates:
+            - Path=/customers/**
+        - id: config-product
+          uri: lb://config-product
+          predicates:
+            - Path=/products/**
+        - id: config-shopping
+          uri: lb://config-shopping
+          predicates:
+            - Path=/invoices/**
+eureka:
+  instance:
+    statusPageUrlPath: ${management.endpoints.web.base-path}/info
+    healthCheckUrlPath: ${management.endpoints.web.base-path}/health
+    prefer-ip-address: true
+#    hostname: http://127.0.0.1
+#    lease-renewal-interval-in-seconds: 10
+#    lease-expiration-duration-in-seconds: 20
+  client:
+    serviceUrl:
+#      defaultZone: http://127.0.0.1:8099/eureka/
+      defaultZone: http://primary:8011/eureka/,http://secondary:8012/eureka/,http://tertiary:8013/eureka/
+info:
+  project:
+    name: ms-store-gateway
+    description: Store Gateway
+    version: 1.0.0
+management:
+  endpoints:
+    web:
+      base-path: '/gateway/actuator'
+      exposure:
+        #include: env,health,metrics,info,hystrix.stream
+        include: '*'
+        #include: hystrix.stream, info, health

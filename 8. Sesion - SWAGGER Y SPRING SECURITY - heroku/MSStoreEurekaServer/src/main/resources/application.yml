@@ -1,0 +1,51 @@
+#server:
+#  port: 8099
+#eureka:
+#  instance:
+#    hostname: localhost
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+#---
+#spring:
+#  profiles: primary
+##server:
+##  port: 8011
+#eureka:
+#  instance:
+#    hostname: primary
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    service-url:
+#      defaultZone: http://${eureka-secondary}:8012/eureka/,http://${eureka-tertiary}:8013/eureka/
+#      
+#---
+#spring:
+#  profiles: secondary
+##server:
+##  port: 8012
+#eureka:
+#  instance:
+#    hostname: secondary
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    service-url:
+#      defaultZone: http://${eureka-primary}:8011/eureka/,http://${eureka-tertiary}:8013/eureka/
+#      
+#---
+#spring:
+#  profiles: tertiary
+##server:
+##  port: 8013
+#eureka:
+#  instance:
+#    hostname: tertiary
+#  client:
+#    registerWithEureka: false
+#    fetchRegistry: false
+#    service-url:
+#      defaultZone: http://${eureka-primary}:8011/eureka/,http://${eureka-secondary}:8012/eureka/

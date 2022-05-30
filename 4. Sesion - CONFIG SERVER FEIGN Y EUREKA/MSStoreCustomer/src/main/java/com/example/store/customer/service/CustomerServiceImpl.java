@@ -1,0 +1,77 @@
+package com.example.store.customer.service;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.example.store.customer.bean.Customer;
+import com.example.store.customer.bean.Region;
+import com.example.store.customer.jdbc.CustomerDao;
+import com.example.store.customer.repository.CustomerRepository;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Service
+@RequiredArgsConstructor
+public class CustomerServiceImpl implements CustomerService {
+
+	// @Autowired
+	private final CustomerRepository customerRepository;
+
+	private final CustomerDao customerDao;
+
+	@Override
+	public List<Customer> findCustomerAll() {
+		 return customerRepository.findAll();
+		//return customerDao.findAllCustomer();
+	}
+
+	@Override
+	public List<Customer> findCustomersByRegion(Region region) {
+		return customerRepository.findByRegion(region);
+	}
+
+	@Override
+	public Customer createCustomer(Customer customer) {
+		Customer customerDB = customerRepository.findByNumberID(customer.getNumberID());
+		if (customerDB != null) {
+			return customerDB;
+		}
+
+		customer.setState("CREATED");
+		customerDB = customerRepository.save(customer);
+		return customerDB;
+	//	return customerDao.insertCustomer(customer);
+	}
+
+	@Override
+	public Customer updateCustomer(Customer customer) {
+		Customer customerDB = getCustomer(customer.getId());
+		if (customerDB == null) {
+			return null;
+		}
+		customerDB.setFirstName(customer.getFirstName());
+		customerDB.setLastName(customer.getLastName());
+		customerDB.setEmail(customer.getEmail());
+		customerDB.setPhotoUrl(customer.getPhotoUrl());
+
+		return customerRepository.save(customerDB);
+	}
+
+	@Override
+	public Customer deleteCustomer(Customer customer) {
+		Customer customerDB = getCustomer(customer.getId());
+		if (customerDB == null) {
+			return null;
+		}
+		customer.setState("DELETED");
+		return customerRepository.save(customer);
+	}
+
+	@Override
+	public Customer getCustomer(Long id) {
+		return customerRepository.findById(id).orElse(null);
+	}
+}

@@ -1,0 +1,18 @@
+server:
+  port: 8070
+
+spring:
+  cloud:
+    config:
+      label: main
+      server:
+        git:
+          uri: https://gitlab.com/JeanCar/escuela-microservicios.git
+          searchPaths: config-data
+#          username: ${GIT_USER}
+#          password: ${GIT_PASSWORD}
+          default-label: main
+  security:
+    user:
+      name: jean
+      password: 12345

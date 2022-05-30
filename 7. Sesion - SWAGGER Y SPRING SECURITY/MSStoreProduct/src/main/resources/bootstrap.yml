@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: config-product
+  cloud:
+    config:
+      uri:
+      - http://localhost:8070
+      username: jean
+      password: 12345
+#  security:
+#    user:
+#      name: client
+#      password: clientPassword
+  boot:
+    admin:
+      client:
+        url: [http://localhost:8099]
+        username: "admin"
+        password: "admin123"
+        instance:
+          prefer-ip: true
+          metadata:
+            user.name: 'Jean'
+            user.password: '1234'
+
+#info:
+#  project:
+#    name: ms-store-product
+#    description: Store Products
+#    version: 1.0.0
+#management:
+#  endpoints:
+#    web:
+#      base-path: '/product/actuator'

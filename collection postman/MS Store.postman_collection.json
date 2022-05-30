@@ -1,0 +1,953 @@
+{
+	"info": {
+		"_postman_id": "c5a9f5c4-f088-4fd6-9c56-022c4a24dc16",
+		"name": "MS Store",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Sesion - HELLO WORLD Y POSTGRES",
+			"item": [
+				{
+					"name": "listar Evento",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9091/eventos/listarPorTitulo?titulo=prueba 2",
+							"host": [
+								"localhost"
+							],
+							"port": "9091",
+							"path": [
+								"eventos",
+								"listarPorTitulo"
+							],
+							"query": [
+								{
+									"key": "titulo",
+									"value": "prueba 2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sesion - SERVICIOS REST",
+			"item": [
+				{
+					"name": "product",
+					"item": [
+						{
+							"name": "Lista Product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://Jean:1234@localhost:8086/products",
+									"protocol": "http",
+									"auth": {
+										"user": "Jean",
+										"password": "1234"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista Product - auntenticación",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista Product x categoryId",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/products?categoryId=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"products"
+									],
+									"query": [
+										{
+											"key": "categoryId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"under armour Men 2\",\r\n    \"description\": \"under armour Men 'Lightweight mesh upper delivers complete breathability\",\r\n    \"stock\": 70.0,\r\n    \"price\": 10.5,\r\n    \"createAt\": \"2020-09-05T05:00:00.000+00:00\",\r\n    \"category\": {\r\n        \"id\": \"1\",\r\n        \"name\": \"Categoria 01\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8086/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Stock Product",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8086/products/3/stock?quantity=-1.0",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"products",
+										"3",
+										"stock"
+									],
+									"query": [
+										{
+											"key": "quantity",
+											"value": "-1.0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Product",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "    {\r\n        \"name\": \"adidas Cloudfoam Ultimate 2\",\r\n        \"description\": \"Walk in the air in the black / black CLOUDFOAM ULTIMATE running shoe from ADIDAS\",\r\n        \"stock\": 5.0,\r\n        \"price\": 178.89,\r\n        \"status\": \"CREATED\",\r\n        \"createAt\": \"2018-09-05T05:00:00.000+00:00\",\r\n        \"category\": {\r\n            \"id\": 1,\r\n            \"name\": \"shoes\"\r\n        }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8086/products/4",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"products",
+										"4"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8086/products/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8086",
+									"path": [
+										"products",
+										"2"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "customer",
+					"item": [
+						{
+							"name": "List Customer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://Carlos:1234@localhost:8088/customers/3",
+									"protocol": "http",
+									"auth": {
+										"user": "Carlos",
+										"password": "1234"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"customers",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Customer - autenticación",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://config-customer.herokuapp.com/customers/3",
+									"protocol": "https",
+									"host": [
+										"config-customer",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customers",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Customer x regionid",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8088/customers?regionId=1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"customers"
+									],
+									"query": [
+										{
+											"key": "regionId",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Customer",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"numberID\": \"32404590\",\r\n        \"firstName\": \"Jean Carloss\",\r\n        \"lastName\": \"Vasquez\",\r\n        \"email\": \"profesor22@bolsadeideas.com\",\r\n        \"photoUrl\": \"\",\r\n        \"region\": {\r\n            \"id\": 1,\r\n            \"name\": \"Region 01\"\r\n        },\r\n        \"state\": \"CREATED\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete Customer",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8088/customers/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8088",
+									"path": [
+										"customers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Customer",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": " {\r\n        \"numberID\": \"52342277\",\r\n        \"firstName\": \"jean\",\r\n        \"lastName\": \"Vasquez\",\r\n        \"email\": \"carlossss12@bolsadeideas.com\",\r\n        \"photoUrl\": \"\",\r\n        \"region\": {\r\n            \"id\": \"2\"\r\n        }\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://config-customer.herokuapp.com/customers",
+									"protocol": "https",
+									"host": [
+										"config-customer",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"customers"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "shopping",
+					"item": [
+						{
+							"name": "Lista Shopping",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiYWRtaW4iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjMwOTUwNTgyLCJleHAiOjE2MzA5NTExODJ9.9FWXMapBr4z8tQetf9iZSI7Ycu65fjODNudJm-wWN82XXXbjWN_s-1LFrxicJa_7rRbrxmXr8XP3eLML0gdAKw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8087/invoices/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"invoices",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista Shopping  x id",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "31286AD1EC57491D9D4B7B1982A247C7",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8087/invoices/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"invoices",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Shopping",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "21e7790e24",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "CG-000739",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"numberInvoice\": \"14224400\",\r\n    \"description\": \"invoice office\",\r\n    \"customerId\": 3,\r\n    \"createAt\": \"2021-06-30\",\r\n    \"items\": [\r\n        {\r\n            \"quantity\": 2.0,\r\n            \"price\": 10.5,\r\n            \"productId\": 1\r\n        },\r\n            {\r\n            \"quantity\": 2.0,\r\n            \"price\": 10.5,\r\n            \"productId\": 2\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8087/invoices/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"invoices",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Generate Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8087/user?user=jean&password=123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"user"
+									],
+									"query": [
+										{
+											"key": "user",
+											"value": "jean"
+										},
+										{
+											"key": "password",
+											"value": "123"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Token",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "user",
+											"value": "admin2",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "http://localhost:8087/user?user=admin&password=admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8087",
+									"path": [
+										"user"
+									],
+									"query": [
+										{
+											"key": "user",
+											"value": "admin"
+										},
+										{
+											"key": "password",
+											"value": "admin"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "apigateway",
+					"item": [
+						{
+							"name": "Lista Product",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://Jean:1234@localhost:8085/products",
+									"protocol": "http",
+									"auth": {
+										"user": "Jean",
+										"password": "1234"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Customer",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://Carlos:1234@localhost:8085/customers/",
+									"protocol": "http",
+									"auth": {
+										"user": "Carlos",
+										"password": "1234"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"customers",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista Shopping",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJzb2Z0dGVrSldUIiwic3ViIjoiYWRtaW4iLCJhdXRob3JpdGllcyI6WyJST0xFX1VTRVIiXSwiaWF0IjoxNjMwOTUwNTgyLCJleHAiOjE2MzA5NTExODJ9.9FWXMapBr4z8tQetf9iZSI7Ycu65fjODNudJm-wWN82XXXbjWN_s-1LFrxicJa_7rRbrxmXr8XP3eLML0gdAKw",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8085/invoices/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"invoices",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lista Shopping  x id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8085/invoices/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"invoices",
+										"3"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Shopping",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n        \"numberInvoice\": \"0009\",\r\n        \"description\": \"invoice office\",\r\n        \"customerId\": 2,\r\n        \"createAt\": \"2021-06-30\",\r\n        \"items\": [\r\n            {\r\n                \"quantity\": 4.0,\r\n                \"price\": 101.0,\r\n                \"productId\": 39,\r\n                \"subTotal\": 100.0\r\n            }\r\n        ],\r\n        \"state\": \"CREATED\"\r\n    }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8085/invoices/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8085",
+									"path": [
+										"invoices",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Config-server",
+					"item": [
+						{
+							"name": "Config Server - product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://jean:12345@localhost:8070/config-product/default",
+									"protocol": "http",
+									"auth": {
+										"user": "jean",
+										"password": "12345"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"config-product",
+										"default"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Config Server - customer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://jean:12345@localhost:8070/config-customer/default",
+									"protocol": "http",
+									"auth": {
+										"user": "jean",
+										"password": "12345"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"config-customer",
+										"default"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Config Server - invoices",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://jean:12345@localhost:8070/config-shopping/default",
+									"protocol": "http",
+									"auth": {
+										"user": "jean",
+										"password": "12345"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"config-shopping",
+										"default"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Config Server - registry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://jean:12345@localhost:8070/config-gateway/default",
+									"protocol": "http",
+									"auth": {
+										"user": "jean",
+										"password": "12345"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"config-gateway",
+										"default"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Config Server - gateway",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://jean:12345@localhost:8070/config-registry/storeServer01",
+									"protocol": "http",
+									"auth": {
+										"user": "jean",
+										"password": "12345"
+									},
+									"host": [
+										"localhost"
+									],
+									"port": "8070",
+									"path": [
+										"config-registry",
+										"storeServer01"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Config-server Heroku",
+					"item": [
+						{
+							"name": "Config Server - product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jean:12345@config-server-msjava.herokuapp.com/config-products/default",
+									"protocol": "https",
+									"auth": {
+										"user": "jean",
+										"password": "12345"
+									},
+									"host": [
+										"config-server-msjava",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"config-products",
+										"default"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Config Server - customer",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jean:12345@config-server-msjava.herokuapp.com/config-customer/default",
+									"protocol": "https",
+									"auth": {
+										"user": "jean",
+										"password": "12345"
+									},
+									"host": [
+										"config-server-msjava",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"config-customer",
+										"default"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Config Server - registry",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://jean:12345@config-server-msjava.herokuapp.com/config-registry/default",
+									"protocol": "https",
+									"auth": {
+										"user": "jean",
+										"password": "12345"
+									},
+									"host": [
+										"config-server-msjava",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"config-registry",
+										"default"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

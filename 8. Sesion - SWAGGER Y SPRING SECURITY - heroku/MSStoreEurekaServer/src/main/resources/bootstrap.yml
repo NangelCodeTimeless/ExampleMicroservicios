@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: config-registry
+  cloud:
+    config:
+      uri:
+      - https://config-server-msjava.herokuapp.com
+      username: jean
+      password: 12345

@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: config-product
+  cloud:
+    config:
+      uri:
+      - http://localhost:8070
+      username: jean
+      password: 12345
+#info:
+#  project:
+#    name: ms-store-product
+#    description: Store Products
+#    version: 1.0.0
+#management:
+#  endpoints:
+#    web:
+#      base-path: '/product/actuator'
+#      exposure:
+#        include:
+#        - "*"

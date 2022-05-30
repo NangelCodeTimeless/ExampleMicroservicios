@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-shopping
+info:
+  project:
+    name: ms-store-shopping
+    description: Store Shopping
+    version: 1.0.0
+management:
+  endpoints:
+    web:
+      base-path: '/shopping/actuator'
+      exposure:
+        include: '*'

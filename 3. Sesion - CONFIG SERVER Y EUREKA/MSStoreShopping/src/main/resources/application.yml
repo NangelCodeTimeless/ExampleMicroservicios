@@ -1,0 +1,39 @@
+server:
+  port: 8087
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-exception: false
+#spring:
+#  datasource:
+#    driverClassName: org.h2.Driver
+#    password: password
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: password
+    url: jdbc:postgresql://localhost:5432/ProductDB
+    username: postgres
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+#  jackson:
+#    serialization:
+#      FAIL_ON_EMPTY_BEANS: false
+
+eureka:
+  instance:
+    statusPageUrlPath: ${management.endpoints.web.base-path}/info
+    healthCheckUrlPath: ${management.endpoints.web.base-path}/health
+    #prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:8099/eureka/

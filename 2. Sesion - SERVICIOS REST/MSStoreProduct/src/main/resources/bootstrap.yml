@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-product
+info:
+  project:
+    name: ms-store-product
+    description: Store Product
+    version: 1.0.0
+management:
+  endpoints:
+    web:
+      base-path: '/product/actuator'
+      exposure:
+        include: '*'

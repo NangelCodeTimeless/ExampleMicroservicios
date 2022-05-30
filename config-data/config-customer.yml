@@ -1,0 +1,59 @@
+server:
+  port: 8088
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-exception: false
+#spring:
+#  datasource:
+#    driverClassName: org.h2.Driver
+#    password: password
+#    url: jdbc:h2:mem:testdb
+#    username: sa
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    password: password
+    url: jdbc:postgresql://localhost:5432/ProductDB
+    username: postgres
+#spring:
+#  datasource:
+#    driver-class-name: org.postgresql.Driver
+#    password: c3f4c21622202f67221f763f231f62df74bfaebb8bfcc042c8c815b11de0cc98
+#    url: jdbc:postgresql://ec2-35-153-114-74.compute-1.amazonaws.com:5432/d9nq6kpkrp454v
+#    username: tpnlzurgzzxzlv
+
+  h2:
+    console:
+      enabled: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    #database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+eureka:
+  instance:
+    statusPageUrlPath: ${management.endpoints.web.base-path}/info
+    healthCheckUrlPath: ${management.endpoints.web.base-path}/health
+    hostname: eureka-server-msjava.herokuapp.com
+    prefer-ip-address: false
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}/eureka/
+#      defaultZone: http://127.0.0.1:8099/eureka/
+#      defaultZone: http://primary:8011/eureka/,http://secondary:8012/eureka/,http://tertiary:8013/eureka/
+info:
+  project:
+    name: ms-store-customer
+    description: Store Customer
+    version: 1.0.0
+management:
+  endpoints:
+    web:
+      base-path: '/customer/actuator'
+      exposure:
+        include:
+        - "*"
